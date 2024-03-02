@@ -1,0 +1,22 @@
+.GroupBox{
+    display: flex;
+    flex-wrap: wrap;
+}
+.GenreList{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.light{
+    color: #281515;
+}
+.dark{
+    color: peachpuff;
+}
+p{
+    width: max-content;
+    font-weight: bold;
+}
+ul li p{
+    width: 200px;
+}

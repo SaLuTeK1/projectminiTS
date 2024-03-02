@@ -1,0 +1,38 @@
+.BigBox{
+    display: flex;
+}
+.Header{
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Header h1{
+    margin: 15px;
+}
+.WrapBox{
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.light{
+    background: #9dcff3;
+    color: #281515;
+}
+.dark{
+    background: rgb(3, 37, 65);
+    color: peachpuff;
+}
+.MiniBoxes{
+    display: flex;
+    align-items: center;
+}
+.MiniBoxes form{
+    display: flex;
+    align-items: center;
+}

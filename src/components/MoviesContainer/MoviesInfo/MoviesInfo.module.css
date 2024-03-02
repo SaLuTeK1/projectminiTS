@@ -1,0 +1,41 @@
+.Wrapper{
+    height: 100vh;
+}
+.BigBox{
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+}
+.BigBox img{
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.5);
+}
+.InfoText{
+    margin-left: 15px;
+}
+.InfoText p{
+    width: 700px;
+    font-size: 15px;
+    font-weight: 400;
+}
+.Stars{
+    margin-top: 15px;
+    display: flex;
+}
+.light{
+    color: #281515;
+}
+.dark{
+    color: peachpuff;
+}
+.OtherText{
+    align-items: center;
+    display: flex;
+}
+.SmallBoxes{
+    margin-bottom: 15px;
+}
+.backdrop{
+    width: 1000px;
+}
