@@ -13,14 +13,12 @@ const Header = () => {
 
     const myClass = `${css.WrapBox} ${css[theme]}`
 
-
-
     return (
         <div className={css.BigBox}>
             <div className={myClass}>
                 <div className={css.Header}>
                     <div className={css.miniBoxes}>
-                        <h1><Link className={css[theme]} to={''}>MovieArea</Link></h1>
+                        <h1><Link className={css[theme]} to={'/movies?page=1'}>MovieArea</Link></h1>
                         <GenresSelect/>
                         <div>
                             <Search/>

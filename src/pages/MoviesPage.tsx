@@ -22,9 +22,7 @@ const MoviesPage = () => {
 
     return (
         <div>
-            <div>
                 <MoviesList moviesRes={moviesRes} setQuery={setQuery} query={query}/>
-            </div>
         </div>
     );
 };

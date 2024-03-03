@@ -1,11 +1,11 @@
 import {FC} from 'react';
 import {Link} from "react-router-dom";
-import Rating from '@mui/material/Rating';
 
 import css from './MovieListCard.module.css'
 import {IMovie} from "../../../interfaces";
-import {imageUrl} from "../../../constants";
 import {useAppContext} from "../../../hooks";
+import {StarsRating} from "../../StarsRating/StarsRating";
+import {PosterPreview} from "../../PosterPreview/PosterPreview";
 
 
 interface IProps {
@@ -16,13 +16,15 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
     const {theme} = useAppContext();
     const {id, title, poster_path, vote_average} = movie
 
+
+
     return (
-        <div className={css.MovieBox}>
+        <div className={`${css.MovieBox} height`}>
             <Link to={`/details/${id}`}>
-                <img alt={title} src={imageUrl + poster_path}/>
+                <PosterPreview title={title} poster_path={poster_path}/>
                  <div className={css.TextStars}>
                          <h3 className={`${theme}`}>{title}</h3>
-                     <Rating name="half-rating-read" value={vote_average / 2} precision={0.2} readOnly />
+                     <StarsRating vote_average={vote_average}/>
                  </div>
             </Link>
         </div>

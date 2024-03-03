@@ -34,8 +34,7 @@ const FavBadge: FC<IProps> = () => {
                 <Favorite color={'error'} sx={{
                     width:35,
                     height:35
-                }}
-                />
+                }}/>
             </Badge>
         </div>
     );

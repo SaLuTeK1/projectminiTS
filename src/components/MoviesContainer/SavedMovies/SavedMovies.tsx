@@ -15,7 +15,7 @@ const SavedMovies: FC<IProps> = ({id}) => {
     }, [id]);
 
     return (
-        <div className={css.MovieBox}>
+        <div className={`${css.MovieBox} saved`}>
             {movies&&<MoviesListCard key={movies.id} movie={movies}/>}
         </div>
     );

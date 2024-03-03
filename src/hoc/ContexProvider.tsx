@@ -7,7 +7,6 @@ interface IThemeContext {
     toggleTheme: () => void;
     toggleTrigger: () => void;
     triggerFavorite: boolean;
-    promptUserName:string
 }
 
 const MyContext = createContext<IThemeContext>({
@@ -15,14 +14,11 @@ const MyContext = createContext<IThemeContext>({
     toggleTheme: () => {},
     toggleTrigger:()=>{},
     triggerFavorite:null,
-    promptUserName:''
 });
 
 const ContextProvider: FC<IProps> = ({children}) => {
 
     const storedTheme = localStorage.getItem('theme');
-
-    const promptUserName= prompt("Enter your username")
 
     const [theme, setTheme] = useState<string>(storedTheme ||'light');
     const [triggerFavorite, setTriggerFavorite] = useState<boolean>(null);
@@ -32,13 +28,11 @@ const ContextProvider: FC<IProps> = ({children}) => {
 
     localStorage.setItem('theme',theme)
 
-
-
     const toggleTrigger = () =>{
         setTriggerFavorite(prev=>!prev)
     }
     return (
-        <MyContext.Provider value={{ theme, toggleTheme ,toggleTrigger, triggerFavorite, promptUserName}}>
+        <MyContext.Provider value={{ theme, toggleTheme ,toggleTrigger, triggerFavorite}}>
             {children}
         </MyContext.Provider>
     );

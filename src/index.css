@@ -29,3 +29,48 @@
     width: 60%;
     margin:0 auto;
 }
+
+.button-light{
+    background: #9dcff3;
+    color: #281515;
+    border: 1px solid #281515;
+
+}
+.button-light:disabled{
+    background: #67869b;
+    color: rgba(45, 33, 33, 0.67);
+}
+.button-dark{
+    background: rgb(3, 37, 65);
+    color: peachpuff;
+    border: 1px solid peachpuff;
+}
+.button-dark:disabled{
+    background: rgb(39, 43, 52);
+    color: #837461;
+}
+.my-button{
+    margin: 10px;
+    text-align: center;
+    width: 65px;
+    height: 45px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+.my-button:hover{
+    box-shadow: 0 4px 10px rgba(0,0,0,.5);
+    cursor: pointer;
+}
+.my-button:disabled:hover{
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    cursor: default;
+}
+.button-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.saved .height{
+    height: 100%;
+}

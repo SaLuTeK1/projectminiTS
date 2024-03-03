@@ -4,16 +4,25 @@ import {MoviesPage, MovieInfoPage, GenresPage, SearchPage, ErrorPage, SavedMovie
 import {apiService} from "./services";
 import {urls} from "./constants";
 import {MainLayout} from "./layouts";
+import {LoginPage} from "./pages/LoginPage";
+import {AuthChecker} from "./components";
 
 
 const router = createBrowserRouter([
     {
         path:'',element:<MainLayout/>,errorElement:<ErrorPage/>,children:[
             {
-                index:true,element:<Navigate to={'movies'}/>
+                index:true,element:<Navigate to={'login'}/>
             },
             {
-                path:'movies',element:<MoviesPage/>, loader:()=>apiService.get(urls.movie.base)
+                path:'login',element:<LoginPage/>
+            },
+            {
+                path:'movies',element:(
+                    <AuthChecker>
+                        <MoviesPage/>
+                    </AuthChecker>
+                ) , loader:()=>apiService.get(urls.movie.base)
             },
             {
                 path:'details/:id' ,element:<MovieInfoPage/>, loader:({params:{id}})=>apiService.get(urls.movie.byId(+id))

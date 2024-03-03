@@ -1,15 +1,12 @@
 import {FC, useEffect, useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import {IconButton} from "@mui/material";
-import Rating from "@mui/material/Rating";
-import Favorite from "@mui/icons-material/Favorite";
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 import {IMovie} from "../../../interfaces";
-import {imageUrl} from "../../../constants";
 import {useAppContext} from "../../../hooks";
-import {removeFavorite, toFavourite} from "../../../utils";
 import css from './MoviesInfo.module.css'
+import {IconButtonContainer} from "../../IconsContainer/IconButtonContainer/IconButtonContainer";
+import {StarsRating} from "../../StarsRating/StarsRating";
+import {PosterPreview} from "../../PosterPreview/PosterPreview";
 
 interface IProps {
     movieInfo:IMovie
@@ -71,20 +68,22 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
     }, [ids, fav, cross, id , text,text2]);
 
     const navigate = useNavigate();
+
+    
     return (
         <div className={myClass}>
             <div className={'wrap'}>
-                <button onClick={()=>navigate(-1)}>Back</button>
+                <button className={`my-button button-${theme}`} onClick={()=>navigate(-1)}>Back</button>
             </div>
             <div className={css.BigBox}>
-                <div >
-                    <img alt={title} src={imageUrl + poster_path}/>
+                <div>
+                    <PosterPreview title={title} poster_path={poster_path}/>
                 </div>
                 <div className={css.InfoText}>
                     <h1>{title} ({date[0]})</h1>
                     <h5><i>{tagline}</i></h5>
                     <div className={`${css.Stars}`}>
-                        <h3>Rating:</h3>   <Rating name="half-rating-read" value={vote_average / 2} precision={0.2} readOnly/>
+                        <h3>Rating:</h3> <StarsRating vote_average={vote_average}/>
                     </div>
                     <div className={css.SmallBoxes}>
                         <h4>Rating in ten-point scale: {vote_average}/10</h4>
@@ -111,27 +110,15 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
                         <h3>Overview:</h3><i><p>{overview}</p></i>
                     </div>
                     <div className={`${css.OtherText} ${css.SmallBoxes}`} id={`box${id}`}>
+
                         <div id={`text${id}`} className={`show`}>
                             <h4 >Wanna save this?</h4>
                         </div>
+
                         <div id={`text2${id}`} className={`hide`}>
                             <h4 >Wanna delete this?</h4>
                         </div>
-
-                        <IconButton id={`f${id}`} className={`show`} onClick={()=>toFavourite(id, toggleTrigger)}>
-                            <Favorite color={'error'}
-                                      sx={{
-                                          width:40,
-                                          height:40
-                            }} />
-
-                        </IconButton>
-                        <IconButton id={`cancl${id}`} className={`hide`} onClick={()=>removeFavorite(id, toggleTrigger, setIds)}>
-                            <CancelOutlinedIcon  sx={{
-                                width:40,
-                                height:40
-                            }}/>
-                        </IconButton>
+                        <IconButtonContainer id={id} toggleTrigger={toggleTrigger} setIds={setIds}/>
                     </div>
                 </div>
             </div>

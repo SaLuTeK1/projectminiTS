@@ -1,9 +1,9 @@
 import {FC} from 'react';
-
-import {IMovieRes} from "../../../interfaces";
-import {MoviesListCard} from "../MovieListCard/MoviesListCard";
-import {next, prev} from "../../../utils";
 import {SetURLSearchParams} from "react-router-dom";
+
+import {MoviesListCard} from "../MovieListCard/MoviesListCard";
+import {IMovieRes} from "../../../interfaces";
+import {Pagination} from "../../Pagination/Pagination";
 
 interface IProps {
     moviesRes:IMovieRes
@@ -20,11 +20,7 @@ const MoviesList: FC<IProps> = ({moviesRes, setQuery, query}) => {
             <div className={'movies-box'}>
                 {movies.map(movie=><MoviesListCard key={movie.id} movie={movie}/>)}
             </div>
-            <div>
-                <button disabled={page==='1'} onClick={()=>prev(setQuery)}>Back</button>
-                <button>{page}</button>
-                <button disabled={page==='500'||page===`${totalPages}`} onClick={()=>next(setQuery)} >Forward</button>
-            </div>
+            <Pagination setQuery={setQuery} totalPages={totalPages} page={page}/>
         </div>
     );
 };

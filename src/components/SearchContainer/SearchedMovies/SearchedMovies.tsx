@@ -1,9 +1,10 @@
 import {FC} from 'react';
+import {SetURLSearchParams} from "react-router-dom";
+
 import {IMovieRes} from "../../../interfaces";
 import {MoviesListCard} from "../../MoviesContainer/MovieListCard/MoviesListCard";
 import css from './SearchedMovies.module.css'
-import {next, prev} from "../../../utils";
-import {SetURLSearchParams} from "react-router-dom";
+import {Pagination} from "../../Pagination/Pagination";
 interface IProps {
     searchRes:IMovieRes
     setQuery:SetURLSearchParams
@@ -20,11 +21,7 @@ const SearchedMovies: FC<IProps> = ({searchRes, setQuery, query}) => {
             <div className={css.MoviesBox}>
                 {movies.map(movie=><MoviesListCard movie={movie} key={movie.id}/>)}
             </div>
-            <div>
-                <button disabled={page==='1' } onClick={()=>prev(setQuery)}>Back</button>
-                <button>{page}</button>
-                <button disabled={page==='500' ||page===`${totalPages}`} onClick={()=>next(setQuery)} >Forward</button>
-            </div>
+            <Pagination setQuery={setQuery} totalPages={totalPages} page={page}/>
         </div>
     );
 };
