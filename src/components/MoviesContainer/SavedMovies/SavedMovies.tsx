@@ -1,8 +1,8 @@
 import {FC, useEffect, useState} from 'react';
 import {movieService} from "../../../services";
 import {IMovie} from "../../../interfaces";
-import {MoviesListCard} from "../Movie/MoviesListCard";
-
+import {MoviesListCard} from "../MovieListCard/MoviesListCard";
+import css from './SavedMovies.module.css'
 interface IProps {
     id:number
 }
@@ -15,10 +15,8 @@ const SavedMovies: FC<IProps> = ({id}) => {
     }, [id]);
 
     return (
-        <div >
-            <div>
+        <div className={css.MovieBox}>
             {movies&&<MoviesListCard key={movies.id} movie={movies}/>}
-            </div>
         </div>
     );
 };

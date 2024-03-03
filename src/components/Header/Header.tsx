@@ -6,7 +6,7 @@ import {GenresSelect} from "../GenresContainer/GenresMenu/GenresSelect";
 import {Search} from "../SearchContainer/Search/Search";
 import {FavBadge} from "../BadgeContainer/FavBadge/FavBadge";
 import {SwitchContainer} from "../SwitchContainer/SwitchContainer";
-import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
+import {UserInfo} from "../IconsContainer/UserInfo/UserInfo";
 const Header = () => {
 
     const { theme } = useAppContext();
@@ -27,10 +27,7 @@ const Header = () => {
                         </div>
                     </div>
                     <div className={`${css.miniBoxes} ${css.rightside}`}>
-                        <AccountBoxRoundedIcon sx={{
-                            width:35,
-                            height:35
-                        }}/>
+                        <UserInfo/>
                         <FavBadge/>
                         <SwitchContainer/>
                     </div>

@@ -1,8 +1,7 @@
 import {FC} from 'react';
 
-import css from './MoviesList.module.css'
 import {IMovieRes} from "../../../interfaces";
-import {MoviesListCard} from "../Movie/MoviesListCard";
+import {MoviesListCard} from "../MovieListCard/MoviesListCard";
 import {next, prev} from "../../../utils";
 import {SetURLSearchParams} from "react-router-dom";
 
@@ -16,10 +15,9 @@ const MoviesList: FC<IProps> = ({moviesRes, setQuery, query}) => {
     const movies = moviesRes.results
     const totalPages = moviesRes.total_pages;
     const page = query.get('page')
-    console.log(totalPages)
     return (
-        <div className={css.wrap}>
-            <div className={css.MoviesBox}>
+        <div className={'wrap'}>
+            <div className={'movies-box'}>
                 {movies.map(movie=><MoviesListCard key={movie.id} movie={movie}/>)}
             </div>
             <div>

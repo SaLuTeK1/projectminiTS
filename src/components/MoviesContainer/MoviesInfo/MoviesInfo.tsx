@@ -1,14 +1,15 @@
 import {FC, useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {IconButton} from "@mui/material";
 import Rating from "@mui/material/Rating";
+import Favorite from "@mui/icons-material/Favorite";
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 import {IMovie} from "../../../interfaces";
 import {imageUrl} from "../../../constants";
-import css from './MoviesInfo.module.css'
 import {useAppContext} from "../../../hooks";
-import Favorite from "@mui/icons-material/Favorite";
-import {IconButton} from "@mui/material";
+import {removeFavorite, toFavourite} from "../../../utils";
+import css from './MoviesInfo.module.css'
 
 interface IProps {
     movieInfo:IMovie
@@ -36,29 +37,6 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
         }
     }, [favorites]);
 
-
-
-    const toFavourite = async () =>{
-        const favorites = localStorage.getItem('favoriteMovies');
-        const favoriteMovies = favorites ? JSON.parse(favorites) : [];
-        if (!favoriteMovies.includes(id)) {
-            favoriteMovies.push(id);
-            localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies));
-            toggleTrigger();
-        }
-    }
-    const removeFavorite = async (id:number) =>{
-        const favList:number[] = JSON.parse(favorites);
-        const updatedFavList = favList.filter(favId => favId !== id);
-        if (updatedFavList.length === 0) {
-            localStorage.removeItem('favoriteMovies');
-            setIds([]);
-        } else {
-            localStorage.setItem('favoriteMovies', JSON.stringify(updatedFavList));
-        }
-        toggleTrigger();
-
-    }
     const text = document.getElementById(`text${id}`)
     const text2 = document.getElementById(`text2${id}`)
     const fav = document.getElementById(`f${id}`)
@@ -92,11 +70,14 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
         }
     }, [ids, fav, cross, id , text,text2]);
 
-
+    const navigate = useNavigate();
     return (
         <div className={myClass}>
+            <div className={'wrap'}>
+                <button onClick={()=>navigate(-1)}>Back</button>
+            </div>
             <div className={css.BigBox}>
-                <div>
+                <div >
                     <img alt={title} src={imageUrl + poster_path}/>
                 </div>
                 <div className={css.InfoText}>
@@ -137,7 +118,7 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
                             <h4 >Wanna delete this?</h4>
                         </div>
 
-                        <IconButton id={`f${id}`} className={`show`} onClick={toFavourite}>
+                        <IconButton id={`f${id}`} className={`show`} onClick={()=>toFavourite(id, toggleTrigger)}>
                             <Favorite color={'error'}
                                       sx={{
                                           width:40,
@@ -145,7 +126,7 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
                             }} />
 
                         </IconButton>
-                        <IconButton id={`cancl${id}`} className={`hide`} onClick={()=>removeFavorite(id)}>
+                        <IconButton id={`cancl${id}`} className={`hide`} onClick={()=>removeFavorite(id, toggleTrigger, setIds)}>
                             <CancelOutlinedIcon  sx={{
                                 width:40,
                                 height:40

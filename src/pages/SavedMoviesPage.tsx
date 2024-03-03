@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
-import {SavedMovies} from "../components/MoviesContainer/SavedMovies/SavedMovies";
-import css from './SavedMoviesPage.module.css'
+import {SavedMovies} from "../components";
 const SavedMoviesPage = () => {
 
     const [ids, setIds] = useState<string[]>([])
@@ -15,12 +14,12 @@ const SavedMoviesPage = () => {
         }
     }, [favId]);
 
-    console.log(ids)
-    
+
     return (
-        <div className={css.FavMovieBox}>
-            <div className={css.MoviesBox}>
-                {ids?.map(id=><SavedMovies key={id} id={+id}/>)}
+        <div className={'background wrap'}>
+            <div className={'movies-box'}>
+                {ids.length===0?<h3>Your list is empty</h3>:ids.map(id=><SavedMovies key={id} id={+id}/>)}
+
             </div>
         </div>
     );

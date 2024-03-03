@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import {IMovieRes} from "../../../interfaces";
-import {MoviesListCard} from "../../MoviesContainer/Movie/MoviesListCard";
+import {MoviesListCard} from "../../MoviesContainer/MovieListCard/MoviesListCard";
 import css from './SearchedMovies.module.css'
 import {next, prev} from "../../../utils";
 import {SetURLSearchParams} from "react-router-dom";

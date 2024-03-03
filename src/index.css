@@ -18,5 +18,14 @@
     display:inline-block !important;
 }
 .background{
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
+}
+.movies-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 42px;
+}
+.wrap{
+    width: 60%;
+    margin:0 auto;
 }

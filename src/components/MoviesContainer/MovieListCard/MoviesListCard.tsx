@@ -20,13 +20,11 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
         <div className={css.MovieBox}>
             <Link to={`/details/${id}`}>
                 <img alt={title} src={imageUrl + poster_path}/>
+                 <div className={css.TextStars}>
+                         <h3 className={`${theme}`}>{title}</h3>
+                     <Rating name="half-rating-read" value={vote_average / 2} precision={0.2} readOnly />
+                 </div>
             </Link>
-            <div className={css.TextStars}>
-                <Link to={`/details/${id}`}>
-                    <h3 className={`${theme}`}>{title}</h3>
-                </Link>
-                <Rating name="half-rating-read" value={vote_average / 2} precision={0.2} readOnly />
-            </div>
         </div>
     );
 };

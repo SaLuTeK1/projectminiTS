@@ -12,16 +12,16 @@ const SwitchContainer: FC<IProps> = () => {
         <div>
             <Switch onClick={toggleTheme} sx={{
                 '& .MuiSwitch-switchBase.Mui-checked': {
-                    color: theme === 'dark' ? '#9ccef1' : '#281515',
+                    color: theme === 'dark' ? '#9ccef1' : '#032541',
                     '&:hover': {
                         backgroundColor: alpha(theme === 'dark' ? '#6e7f81' : '#7bb4b6', 0.5),
                     },
                 },
                 '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-                    backgroundColor: theme === 'dark' ? '#9ccef1' : '#00ffd0',
+                    backgroundColor: theme === 'dark' ? '#9ccef1' : '#032541',
                 },
                 '& .MuiSwitch-track': {
-                    backgroundColor: theme === 'dark' ? '#032541' : '#032541',
+                    backgroundColor: theme === 'dark' ? '#e0eaf1' : '#032541',
                 },
                 '& .MuiSwitch-switchBase': {
                     color: theme === 'dark' ? '#9ccef1' : '#032541',

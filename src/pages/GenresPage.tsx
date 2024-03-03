@@ -18,9 +18,11 @@ const GenresPage = () => {
     
     useEffect(() => {
         if(genreId?.length>1){
-            movieService.getBySeveralGenreIds(genreId,page).then(({data})=>setGenreMovies({page:data.page,results:data.results, total_pages:data.total_pages}))
+            movieService.getBySeveralGenreIds(genreId,page).then(({data})=>setGenreMovies(
+                {page:data.page,results:data.results, total_pages:data.total_pages}))
         }if(genreId?.length===1){
-        movieService.getByGenreId(+genreId,page).then(({data})=>setGenreMovies({page:data.page,results:data.results, total_pages:data.total_pages}))
+        movieService.getByGenreId(+genreId,page).then(({data})=>setGenreMovies(
+            {page:data.page,results:data.results, total_pages:data.total_pages}))
         }
     }, [genreId,page]);
 

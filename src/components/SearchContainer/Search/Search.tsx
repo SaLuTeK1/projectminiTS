@@ -1,5 +1,5 @@
 import {FC, useEffect, useState} from 'react';
-import {useForm} from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import OutlinedInput from '@mui/material/OutlinedInput'
 import SearchIcon from '@mui/icons-material/Search';
 import {useNavigate} from "react-router-dom";
@@ -22,7 +22,7 @@ const Search: FC<IProps> = () => {
     const navigate = useNavigate();
     const {theme} = useAppContext();
 
-    const save = async (data:FormValues) =>{
+    const save:SubmitHandler<FormValues> = async (data) =>{
         setSearchWord(data.searchText);
         console.log(data.searchText);
         reset();

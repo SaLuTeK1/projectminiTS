@@ -1,7 +1,8 @@
 import {FC, useEffect, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import Favorite from "@mui/icons-material/Favorite";
 import {Badge} from "@mui/material";
-import {useNavigate} from "react-router-dom";
+
 import {useAppContext} from "../../../hooks";
 import css from './FavBadge.module.css'
 
