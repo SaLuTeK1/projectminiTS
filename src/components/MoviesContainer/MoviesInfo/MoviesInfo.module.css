@@ -39,3 +39,15 @@
 .backdrop{
     width: 1000px;
 }
+.links a{
+    transition: all 0.4s ease;
+}
+
+.links .light:hover{
+    color: #63ad90;
+}
+.links .dark:hover{
+    color: #fcb97f;
+}
+.boxForHeart{
+}

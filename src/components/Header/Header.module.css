@@ -8,7 +8,6 @@
     align-items: center;
     justify-content: space-between;
 }
-
 .Header h1{
     margin: 15px;
 }
@@ -28,11 +27,15 @@
     background: rgb(3, 37, 65);
     color: peachpuff;
 }
-.MiniBoxes{
+.miniBoxes{
     display: flex;
     align-items: center;
 }
-.MiniBoxes form{
+.miniBoxes form{
     display: flex;
     align-items: center;
+}
+.rightside{
+    justify-content: space-between;
+    gap: 5px;
 }

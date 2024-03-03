@@ -11,7 +11,8 @@ const urls = {
     movie:{
         base:`${discover}${movie}`,
         byId:(id:number)=>`${movie}/${id}`,
-        byGenre:(genrId:number)=>`${discover}${movie}?with_genres=${genrId}`
+        byGenre:(genreId:number)=>`${discover}${movie}?with_genres=${genreId}`,
+        byGenreIds:(genreIds:string)=>`${discover}${movie}?with_genres=${genreIds}`
     },
     genre:{
         base:`${genre}${movie}/list`

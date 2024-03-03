@@ -1,6 +1,7 @@
-import {FC} from 'react';
+import {FC, useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import Rating from "@mui/material/Rating";
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 import {IMovie} from "../../../interfaces";
 import {imageUrl} from "../../../constants";
@@ -14,11 +15,28 @@ interface IProps {
 }
 
 const MoviesInfo: FC<IProps> = ({movieInfo}) => {
+
     const {genres, title , poster_path, vote_average, release_date, overview, runtime, tagline, vote_count, id} = movieInfo;
+
     const date = release_date.split('-')
+
     const {theme} = useAppContext();
     const myClass = `${css.Wrapper} ${css[theme]}}`
+
     const {toggleTrigger} = useAppContext();
+
+    const [ids, setIds] = useState<string[]>([])
+    
+    const favorites = localStorage.getItem('favoriteMovies');
+    useEffect(() => {
+        if (favorites) {
+            const modifiedString = favorites.slice(1, favorites.length - 1);
+            const stringId = modifiedString.split(',');
+            setIds(stringId)
+        }
+    }, [favorites]);
+
+
 
     const toFavourite = async () =>{
         const favorites = localStorage.getItem('favoriteMovies');
@@ -29,6 +47,51 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
             toggleTrigger();
         }
     }
+    const removeFavorite = async (id:number) =>{
+        const favList:number[] = JSON.parse(favorites);
+        const updatedFavList = favList.filter(favId => favId !== id);
+        if (updatedFavList.length === 0) {
+            localStorage.removeItem('favoriteMovies');
+            setIds([]);
+        } else {
+            localStorage.setItem('favoriteMovies', JSON.stringify(updatedFavList));
+        }
+        toggleTrigger();
+
+    }
+    const text = document.getElementById(`text${id}`)
+    const text2 = document.getElementById(`text2${id}`)
+    const fav = document.getElementById(`f${id}`)
+    const cross = document.getElementById(`cancl${id}`)
+    useEffect(() => {
+        if (ids?.includes(`${id}`)){
+            fav.classList.add(`hide`)
+            fav.classList.remove('show')
+
+            cross.classList.add('show')
+            cross.classList.remove('hide')
+
+            text.classList.add('hide')
+            text.classList.remove('show')
+
+            text2.classList.add('show')
+            text2.classList.remove('hide')
+        }
+        if (!ids.includes(`${id}`)){
+            fav?.classList.remove('hide')
+            fav?.classList.add(`show`)
+
+            cross?.classList.remove('show')
+            cross?.classList.add('hide')
+
+            text2?.classList.add('hide')
+            text2?.classList.remove('show')
+
+            text?.classList.add('show')
+            text?.classList.remove('hide')
+        }
+    }, [ids, fav, cross, id , text,text2]);
+
 
     return (
         <div className={myClass}>
@@ -51,7 +114,9 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
                         <h3>Genres:</h3>
                         <ul>
                             {genres.map(genre => (
-                                <li key={genre.id}> <Link to={`/genres/${genre.id}`} className={css[theme]}> {genre.name} </Link> </li>
+                                <li key={genre.id} className={css.links}>
+                                    <Link to={`/genres/${genre.id}`} className={css[theme]}> {genre.name} </Link>
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -64,13 +129,27 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
                     <div className={css.SmallBoxes}>
                         <h3>Overview:</h3><i><p>{overview}</p></i>
                     </div>
-                    <div className={`${css.OtherText} ${css.SmallBoxes}`} >
-                        <h4>Wanna save this?</h4>
-                        <IconButton aria-label="add to favorites" onClick={toFavourite}><Favorite color={'error'}
-                                                                                                  sx={{
-                                                                                                      width:40,
-                                                                                                      height:40
-                                                                                                  }}/>
+                    <div className={`${css.OtherText} ${css.SmallBoxes}`} id={`box${id}`}>
+                        <div id={`text${id}`} className={`show`}>
+                            <h4 >Wanna save this?</h4>
+                        </div>
+                        <div id={`text2${id}`} className={`hide`}>
+                            <h4 >Wanna delete this?</h4>
+                        </div>
+
+                        <IconButton id={`f${id}`} className={`show`} onClick={toFavourite}>
+                            <Favorite color={'error'}
+                                      sx={{
+                                          width:40,
+                                          height:40
+                            }} />
+
+                        </IconButton>
+                        <IconButton id={`cancl${id}`} className={`hide`} onClick={()=>removeFavorite(id)}>
+                            <CancelOutlinedIcon  sx={{
+                                width:40,
+                                height:40
+                            }}/>
                         </IconButton>
                     </div>
                 </div>

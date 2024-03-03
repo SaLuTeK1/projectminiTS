@@ -1,0 +1,6 @@
+
+.content{
+    height: calc(100vh - 100px);
+    width: 60%;
+    margin: 0 auto;
+}

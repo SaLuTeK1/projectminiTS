@@ -1,6 +1,6 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 
-import {MoviesPage,MovieInfoPage,GenresPage,SearchPage} from "./pages";
+import {MoviesPage, MovieInfoPage, GenresPage, SearchPage, ErrorPage, SavedMoviesPage} from "./pages";
 import {apiService} from "./services";
 import {urls} from "./constants";
 import {MainLayout} from "./layouts";
@@ -8,7 +8,7 @@ import {MainLayout} from "./layouts";
 
 const router = createBrowserRouter([
     {
-        path:'',element:<MainLayout/>,children:[
+        path:'',element:<MainLayout/>,errorElement:<ErrorPage/>,children:[
             {
                 index:true,element:<Navigate to={'movies'}/>
             },
@@ -21,12 +21,15 @@ const router = createBrowserRouter([
             {
                 path:'genres',element:<GenresPage/> ,children:[
                     {
-                        path:':genreId',element:<GenresPage/>, loader:({params:{genreId}})=>apiService.get(urls.movie.byGenre(+genreId))
+                        path:':genreId',element:<GenresPage/>
                     }
                 ]
             },
             {
                 path:'search/:word',element:<SearchPage/>
+            },
+            {
+                path:'favorites',element:<SavedMoviesPage/>
             }
         ]
     }

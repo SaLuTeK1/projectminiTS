@@ -1,33 +1,32 @@
 import {useEffect, useState} from "react";
 import {useParams, useSearchParams} from "react-router-dom";
 
-import {next, prev} from "../utils";
 import {IMovieRes} from "../interfaces";
 import {movieService} from "../services";
-import {MoviesByGenres} from "../components/MoviesContainer/MoviesByGenres/MoviesByGenres";
+import {MoviesByGenres} from "../components";
+
 
 const GenresPage = () => {
 
-    const [genreMovies, setGenreMovies] = useState<IMovieRes>({page:null,results:[]})
+    const [genreMovies, setGenreMovies] = useState<IMovieRes>({page:null,results:[], total_pages:null})
 
     const [query,setQuery] = useSearchParams({page:'1'});
     const page = query.get('page')
 
     const {genreId} = useParams();
 
+    
     useEffect(() => {
-        movieService.getByGenreId(+genreId,page).then(({data})=>setGenreMovies({page:data.page,results:data.results}))
+        if(genreId?.length>1){
+            movieService.getBySeveralGenreIds(genreId,page).then(({data})=>setGenreMovies({page:data.page,results:data.results, total_pages:data.total_pages}))
+        }if(genreId?.length===1){
+        movieService.getByGenreId(+genreId,page).then(({data})=>setGenreMovies({page:data.page,results:data.results, total_pages:data.total_pages}))
+        }
     }, [genreId,page]);
 
-
     return (
-        <div>
-            {genreMovies&&<MoviesByGenres genreMovies={genreMovies}/>}
-            <div>
-                <button disabled={page==='1'} onClick={()=>prev(setQuery)}>Back</button>
-                <button>{page}</button>
-                <button disabled={page==='500'} onClick={()=>next(setQuery)} >Forward</button>
-            </div>
+        <div className={`background`}>
+            {genreMovies&&<MoviesByGenres genreMovies={genreMovies} setQuery={setQuery} query={query}/>}
         </div>
     );
 };

@@ -1,12 +1,15 @@
 import {FC, useEffect, useState} from 'react';
 import Favorite from "@mui/icons-material/Favorite";
 import {Badge} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../../hooks";
+import css from './FavBadge.module.css'
+
 interface IProps {
 
 }
 
-const MyBadge: FC<IProps> = () => {
+const FavBadge: FC<IProps> = () => {
     const [counter, setCounter] = useState<number>(0)
     const {triggerFavorite} = useAppContext();
 
@@ -20,16 +23,21 @@ const MyBadge: FC<IProps> = () => {
         }
     }, [triggerFavorite]);
 
+    const navigate = useNavigate();
+    const toFavorites = () =>{
+        navigate('/favorites')
+    }
     return (
         <div>
-            <Badge badgeContent={counter} color="primary">
+            <Badge badgeContent={counter} color="primary" onClick={toFavorites} className={css.heart}>
                 <Favorite color={'error'} sx={{
                     width:35,
                     height:35
-                }}/>
+                }}
+                />
             </Badge>
         </div>
     );
 };
 
-export {MyBadge};
+export {FavBadge};

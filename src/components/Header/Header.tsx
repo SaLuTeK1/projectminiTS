@@ -2,11 +2,11 @@ import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
 import {useAppContext} from "../../hooks";
-import {GenresMenu} from "../GenresContainer/Genres/GenresMenu";
+import {GenresSelect} from "../GenresContainer/GenresMenu/GenresSelect";
 import {Search} from "../SearchContainer/Search/Search";
-import {MyBadge} from "../BadgeContainer/FavBadge/Badge";
+import {FavBadge} from "../BadgeContainer/FavBadge/FavBadge";
 import {SwitchContainer} from "../SwitchContainer/SwitchContainer";
-
+import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 const Header = () => {
 
     const { theme } = useAppContext();
@@ -19,15 +19,19 @@ const Header = () => {
         <div className={css.BigBox}>
             <div className={myClass}>
                 <div className={css.Header}>
-                    <div className={css.MiniBoxes}>
+                    <div className={css.miniBoxes}>
                         <h1><Link className={css[theme]} to={''}>MovieArea</Link></h1>
-                        <GenresMenu/>
+                        <GenresSelect/>
                         <div>
                             <Search/>
                         </div>
                     </div>
-                    <div className={css.MiniBoxes}>
-                        <MyBadge/>
+                    <div className={`${css.miniBoxes} ${css.rightside}`}>
+                        <AccountBoxRoundedIcon sx={{
+                            width:35,
+                            height:35
+                        }}/>
+                        <FavBadge/>
                         <SwitchContainer/>
                     </div>
                 </div>

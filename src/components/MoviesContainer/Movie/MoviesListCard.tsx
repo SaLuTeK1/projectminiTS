@@ -23,7 +23,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
             </Link>
             <div className={css.TextStars}>
                 <Link to={`/details/${id}`}>
-                    <h3 className={css[theme]}>{title}</h3>
+                    <h3 className={`${theme}`}>{title}</h3>
                 </Link>
                 <Rating name="half-rating-read" value={vote_average / 2} precision={0.2} readOnly />
             </div>
