@@ -1,10 +1,9 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 
-import {MoviesPage, MovieInfoPage, GenresPage, SearchPage, ErrorPage, SavedMoviesPage} from "./pages";
+import {MoviesPage, MovieInfoPage, GenresPage, SearchPage, ErrorPage, SavedMoviesPage,LoginPage} from "./pages";
 import {apiService} from "./services";
 import {urls} from "./constants";
 import {MainLayout} from "./layouts";
-import {LoginPage} from "./pages/LoginPage";
 import {AuthChecker} from "./components";
 
 

@@ -1,4 +1,5 @@
 import {FC} from 'react';
+
 import {imageUrl} from "../../constants";
 
 interface IProps {

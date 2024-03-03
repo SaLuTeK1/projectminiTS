@@ -1,11 +1,11 @@
 import {FC} from 'react';
 import {Link} from "react-router-dom";
 
-import css from './MovieListCard.module.css'
 import {IMovie} from "../../../interfaces";
 import {useAppContext} from "../../../hooks";
-import {StarsRating} from "../../StarsRating/StarsRating";
-import {PosterPreview} from "../../PosterPreview/PosterPreview";
+import {StarsRating} from "../../StarsRating";
+import {PosterPreview} from "../../PosterPreview";
+import css from './MovieListCard.module.css'
 
 
 interface IProps {

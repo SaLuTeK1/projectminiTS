@@ -1,5 +1,6 @@
 import {FC} from 'react';
 import {alpha, Switch} from "@mui/material";
+
 import {useAppContext} from "../../hooks";
 
 interface IProps {

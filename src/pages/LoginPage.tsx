@@ -1,6 +1,7 @@
-import {LoginForm} from "../components";
-import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+
+import {LoginForm} from "../components";
 
 const LoginPage = () => {
 

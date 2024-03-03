@@ -10,15 +10,15 @@ const search = '/search'
 const urls = {
     movie:{
         base:`${discover}${movie}`,
-        byId:(id:number)=>`${movie}/${id}`,
-        byGenre:(genreId:number)=>`${discover}${movie}?with_genres=${genreId}`,
-        byGenreIds:(genreIds:string)=>`${discover}${movie}?with_genres=${genreIds}`
+        byId:(id:number):string=>`${movie}/${id}`,
+        byGenre:(genreId:number):string=>`${discover}${movie}?with_genres=${genreId}`,
+        byGenreIds:(genreIds:string):string=>`${discover}${movie}?with_genres=${genreIds}`
     },
     genre:{
         base:`${genre}${movie}/list`
     },
     search:{
-        byWord:(word:string)=>`${search}${movie}?query=${word}`
+        byWord:(word:string):string=>`${search}${movie}?query=${word}`
     }
 }
 

@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+
 import {SavedMovies} from "../components";
 import {useAppContext} from "../hooks";
-import {useNavigate} from "react-router-dom";
 const SavedMoviesPage = () => {
 
     const [ids, setIds] = useState<string[]>([])

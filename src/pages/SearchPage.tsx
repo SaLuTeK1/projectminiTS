@@ -1,7 +1,7 @@
+import {useEffect, useState} from "react";
+import {useParams, useSearchParams} from "react-router-dom";
 
 import {SearchedMovies} from "../components";
-import {useParams, useSearchParams} from "react-router-dom";
-import {useEffect, useState} from "react";
 import {searchService} from "../services";
 import {IMovieRes} from "../interfaces";
 

@@ -3,10 +3,10 @@ import {Link, useNavigate} from "react-router-dom";
 
 import {IMovie} from "../../../interfaces";
 import {useAppContext} from "../../../hooks";
+import {IconButtonContainer} from "../../IconsContainer";
+import {StarsRating} from "../../StarsRating";
+import {PosterPreview} from "../../PosterPreview";
 import css from './MoviesInfo.module.css'
-import {IconButtonContainer} from "../../IconsContainer/IconButtonContainer/IconButtonContainer";
-import {StarsRating} from "../../StarsRating/StarsRating";
-import {PosterPreview} from "../../PosterPreview/PosterPreview";
 
 interface IProps {
     movieInfo:IMovie

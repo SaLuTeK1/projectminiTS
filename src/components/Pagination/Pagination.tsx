@@ -1,7 +1,8 @@
 import {FC} from 'react';
+import {SetURLSearchParams} from "react-router-dom";
+
 import {next, prev} from "../../utils";
 import {useAppContext} from "../../hooks";
-import {SetURLSearchParams} from "react-router-dom";
 
 interface IProps {
     setQuery:SetURLSearchParams

@@ -1,0 +1,5 @@
+export * from './SavedMovies/SavedMovies'
+export * from './MoviesInfo/MoviesInfo'
+export * from './MoviesByGenres/MoviesByGenres'
+export * from './MoviesList/MoviesList'
+export * from './MovieListCard/MoviesListCard'

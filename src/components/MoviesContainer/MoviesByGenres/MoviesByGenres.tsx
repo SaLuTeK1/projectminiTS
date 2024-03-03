@@ -1,9 +1,9 @@
 import {FC} from 'react';
+import {SetURLSearchParams} from "react-router-dom";
 
 import {IMovieRes} from "../../../interfaces";
 import {MoviesListCard} from "../MovieListCard/MoviesListCard";
-import {SetURLSearchParams} from "react-router-dom";
-import {Pagination} from "../../Pagination/Pagination";
+import {Pagination} from "../../Pagination";
 
 interface IProps {
     genreMovies:IMovieRes

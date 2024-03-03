@@ -1,12 +1,12 @@
 import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
+import {SwitchContainer} from "../SwitchContainer";
 import {useAppContext} from "../../hooks";
-import {GenresSelect} from "../GenresContainer/GenresMenu/GenresSelect";
-import {Search} from "../SearchContainer/Search/Search";
-import {FavBadge} from "../BadgeContainer/FavBadge/FavBadge";
-import {SwitchContainer} from "../SwitchContainer/SwitchContainer";
-import {UserInfo} from "../IconsContainer/UserInfo/UserInfo";
+import {GenresSelect} from "../GenresContainer";
+import {FavBadge} from "../BadgeContainer";
+import {UserInfo} from "../IconsContainer";
+import {Search} from "../SearchContainer";
 const Header = () => {
 
     const { theme } = useAppContext();

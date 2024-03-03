@@ -2,9 +2,9 @@ import {FC} from 'react';
 import {SetURLSearchParams} from "react-router-dom";
 
 import {IMovieRes} from "../../../interfaces";
-import {MoviesListCard} from "../../MoviesContainer/MovieListCard/MoviesListCard";
+import {MoviesListCard} from "../../MoviesContainer";
 import css from './SearchedMovies.module.css'
-import {Pagination} from "../../Pagination/Pagination";
+import {Pagination} from "../../Pagination";
 interface IProps {
     searchRes:IMovieRes
     setQuery:SetURLSearchParams

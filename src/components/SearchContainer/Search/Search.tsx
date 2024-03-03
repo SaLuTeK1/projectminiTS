@@ -1,10 +1,11 @@
 import {FC, useEffect, useState} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 import OutlinedInput from '@mui/material/OutlinedInput'
 import SearchIcon from '@mui/icons-material/Search';
-import {useNavigate} from "react-router-dom";
-import {useAppContext} from "../../../hooks";
 import {styled} from "@mui/material";
+
+import {useAppContext} from "../../../hooks";
 import css from './Search.module.css'
 
 interface IProps {

@@ -1,8 +1,9 @@
 import {FC} from 'react';
-import {removeFavorite, toFavourite} from "../../../utils";
 import Favorite from "@mui/icons-material/Favorite";
 import {IconButton} from "@mui/material";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+
+import {removeFavorite, toFavourite} from "../../../utils";
 import {ISetState} from "../../../types";
 
 interface IProps {
