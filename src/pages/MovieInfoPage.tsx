@@ -1,17 +1,25 @@
 import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useLoaderData} from "react-router-dom";
 
 import {MoviesInfo} from "../components";
 import {IMovie} from "../interfaces";
-import {movieService} from "../services";
+
+
+interface ILoaderMovie{
+    data:IMovie
+}
 
 const MovieInfoPage = () => {
     const [movieInfo, setMovieInfo] = useState<IMovie>(null)
-    const {id} = useParams();
+    //const {id} = useParams();
+
+    const {data} = useLoaderData() as ILoaderMovie;
+    console.log(data)
 
     useEffect(() => {
-        movieService.getById(+id).then(({data})=> setMovieInfo(data))
-    }, [id]);
+        setMovieInfo(data)
+    }, [data]);
+
 
     return (
 

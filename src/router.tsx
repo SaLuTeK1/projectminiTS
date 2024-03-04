@@ -21,7 +21,7 @@ const router = createBrowserRouter([
                     <AuthChecker>
                         <MoviesPage/>
                     </AuthChecker>
-                ) , loader:()=>apiService.get(urls.movie.base)
+                )
             },
             {
                 path:'details/:id' ,element:<MovieInfoPage/>, loader:({params:{id}})=>apiService.get(urls.movie.byId(+id))
