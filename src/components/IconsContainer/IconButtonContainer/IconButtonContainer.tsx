@@ -7,9 +7,9 @@ import {removeFavorite, toFavourite} from "../../../utils";
 import {ISetState} from "../../../types";
 
 interface IProps {
-    id:number
-    toggleTrigger:()=>void
-    setIds:ISetState<string[]>
+    id: number
+    toggleTrigger: () => void
+    setIds: ISetState<string[]>
 }
 
 const IconButtonContainer: FC<IProps> = ({id,toggleTrigger,setIds}) => {

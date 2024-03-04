@@ -9,22 +9,31 @@ import {PosterPreview} from "../../PosterPreview";
 import css from './MoviesInfo.module.css'
 
 interface IProps {
-    movieInfo:IMovie
+    movieInfo: IMovie
 }
 
 const MoviesInfo: FC<IProps> = ({movieInfo}) => {
 
-    const {genres, title , poster_path, vote_average, release_date, overview, runtime, tagline, vote_count, id} = movieInfo;
+    const {
+        genres,
+        title,
+        poster_path,
+        vote_average,
+        release_date,
+        overview,
+        runtime,
+        tagline,
+        vote_count,
+        id
+    } = movieInfo;
 
     const date = release_date.split('-')
 
     const {theme} = useAppContext();
     const myClass = `${css.Wrapper} ${css[theme]}}`
-
     const {toggleTrigger} = useAppContext();
-
     const [ids, setIds] = useState<string[]>([])
-    
+
     const favorites = localStorage.getItem('favoriteMovies');
     useEffect(() => {
         if (favorites) {
@@ -39,7 +48,7 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
     const fav = document.getElementById(`f${id}`)
     const cross = document.getElementById(`cancl${id}`)
     useEffect(() => {
-        if (ids?.includes(`${id}`)){
+        if (ids?.includes(`${id}`)) {
             fav.classList.add(`hide`)
             fav.classList.remove('show')
 
@@ -52,7 +61,7 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
             text2.classList.add('show')
             text2.classList.remove('hide')
         }
-        if (!ids.includes(`${id}`)){
+        if (!ids.includes(`${id}`)) {
             fav?.classList.remove('hide')
             fav?.classList.add(`show`)
 
@@ -65,15 +74,15 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
             text?.classList.add('show')
             text?.classList.remove('hide')
         }
-    }, [ids, fav, cross, id , text,text2]);
+    }, [ids, fav, cross, id, text, text2]);
 
     const navigate = useNavigate();
 
-    
+
     return (
         <div className={myClass}>
             <div className={'wrap'}>
-                <button className={`my-button button-${theme}`} onClick={()=>navigate(-1)}>Back</button>
+                <button className={`my-button button-${theme}`} onClick={() => navigate(-1)}>Back</button>
             </div>
             <div className={css.BigBox}>
                 <div>
@@ -87,7 +96,7 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
                     </div>
                     <div className={css.SmallBoxes}>
                         <h4>Rating in ten-point scale: {vote_average}/10</h4>
-                        <h4>Rating in percents: {vote_average*10}%</h4>
+                        <h4>Rating in percents: {vote_average * 10}%</h4>
                         <h4>Vote count: {vote_count}</h4>
                     </div>
                     <div className={css.SmallBoxes}>
@@ -112,11 +121,11 @@ const MoviesInfo: FC<IProps> = ({movieInfo}) => {
                     <div className={`${css.OtherText} ${css.SmallBoxes}`} id={`box${id}`}>
 
                         <div id={`text${id}`} className={`show`}>
-                            <h4 >Wanna save this?</h4>
+                            <h4>Wanna save this?</h4>
                         </div>
 
                         <div id={`text2${id}`} className={`hide`}>
-                            <h4 >Wanna delete this?</h4>
+                            <h4>Wanna delete this?</h4>
                         </div>
                         <IconButtonContainer id={id} toggleTrigger={toggleTrigger} setIds={setIds}/>
                     </div>

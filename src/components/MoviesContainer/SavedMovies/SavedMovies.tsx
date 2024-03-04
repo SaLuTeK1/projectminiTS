@@ -4,8 +4,9 @@ import {movieService} from "../../../services";
 import {IMovie} from "../../../interfaces";
 import {MoviesListCard} from "../MovieListCard/MoviesListCard";
 import css from './SavedMovies.module.css'
+
 interface IProps {
-    id:number
+    id: number
 }
 
 const SavedMovies: FC<IProps> = ({id}) => {

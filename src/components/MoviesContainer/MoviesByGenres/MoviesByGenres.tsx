@@ -5,6 +5,7 @@ import {IMovieRes} from "../../../interfaces";
 import {MoviesListCard} from "../MovieListCard/MoviesListCard";
 import {Pagination} from "../../Pagination";
 
+
 interface IProps {
     genreMovies:IMovieRes
     query:URLSearchParams
